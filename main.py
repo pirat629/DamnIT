@@ -59,7 +59,8 @@ async def set_apply(message: types.Message, state: FSMContext):
     await message.answer("Спасибо за успешную регистрацию",reply_markup=types.ReplyKeyboardRemove())
     await bot.send_photo(message.chat.id, photo=open("photo.jpg", "rb"))
     data = await state.get_data()
-    await bot.send_message("6262559451", f"ФИО: {data['name']}\nТелефон: {data['number']}\nКомментарий: {data['comment']}")
+    await bot.send_message("6262559451", f"Пришла новая информация от {message.from_user.username}\n\
+ФИО: {data['name']}\nТелефон: {data['number']}\nКомментарий: {data['comment']}")
 
 
 

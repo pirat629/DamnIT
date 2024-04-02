@@ -17,7 +17,7 @@ class Form(StatesGroup):
 
 @dp.message_handler(commands = ["start"])
 async def start(message: types.Message,state: FSMContext):
-    await message.answer(text=f"{message.from_user.first_name} {message.from_user.last_name}, Добро пожаловать в компанию DamnIT")
+    await message.answer(text=f"{message.from_user.first_name}, Добро пожаловать в компанию DamnIT")
     await Form.name.set()
     await message.answer("Напишите свое ФИО")
     await state.set_state(Form.name.state)

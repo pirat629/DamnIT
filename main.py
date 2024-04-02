@@ -61,6 +61,7 @@ async def set_apply(message: types.Message, state: FSMContext):
     data = await state.get_data()
     await bot.send_message("6262559451", f"Пришла новая информация от {message.from_user.username}\n\
 ФИО: {data['name']}\nТелефон: {data['number']}\nКомментарий: {data['comment']}")
+    await state.finish()
 
 
 

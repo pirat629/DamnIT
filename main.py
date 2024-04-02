@@ -43,7 +43,7 @@ async def set_number(message: types.Message, state: FSMContext):
 
 @dp.message_handler(state=Form.comment)
 async def set_comm(message: types.Message, state: FSMContext):
-    await state.update_data(commment = message.text)
+    await state.update_data(comment = message.text)
     await message.answer("Последний шаг! Ознакомься с вводными положениями")
     await bot.send_document(message.chat.id,document=open("test.pdf","rb"))
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
@@ -59,7 +59,7 @@ async def set_apply(message: types.Message, state: FSMContext):
     await message.answer("Спасибо за успешную регистрацию",reply_markup=types.ReplyKeyboardRemove())
     await bot.send_photo(message.chat.id, photo=open("photo.jpg", "rb"))
     data = await state.get_data()
-    await bot.send_message("6262559451",data)
+    await bot.send_message("6262559451", f"ФИО: {data['name']}\nТелефон: {data['number']}\nКомментарий: {data['comment']}")
 
 
 
